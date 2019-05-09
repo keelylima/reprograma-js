@@ -11,10 +11,11 @@ fetch('https://reqres.in/api/users')
             
             let card = document.createElement('div');
             card.setAttribute('class', 'card');
+            card.setAttribute('id', user.id);
             authors.appendChild(card);
 
             let h2 = document.createElement('h2');
-            h2.innerHTML = user.first_name;
+            h2.innerHTML = `${user.first_name} ${user.last_name}`;
             card.appendChild(h2);
 
             let p = document.createElement('p');
@@ -23,7 +24,34 @@ fetch('https://reqres.in/api/users')
 
             let btn = document.createElement('button');
             btn.innerHTML = '✖';
+            btn.setAttribute('data-id', user.id);
             card.appendChild(btn);
+
+            btn.addEventListener('click', function(){
+                // const thisCard = btn.parentElement;
+                // console.log(thisCard);
+                // const cardPai = thisCard.parentElement;
+                // console.log(cardPai);
+
+                fetch('https://reqres.in/api/users', {
+                    method: 'DELETE',
+                    headers: {
+                        'Accepet': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'id': btn.getAttribute('data-id')
+                    })
+                })
+                .then(function(){
+                    card.remove();
+                    // cardPai.removeChild(thisCard);
+
+                })
+                .catch(function(erro){
+                    console.log(erro)
+                })
+            })
         })
     })
     .catch(function (erro) {

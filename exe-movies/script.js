@@ -37,6 +37,10 @@ btn.addEventListener('click', function(event){
             pType.innerHTML = movie.Type;
             p.appendChild(pType);
 
+            btn.addEventListener('click', function () {
+                box.remove();
+            });
+
         });
     })
     .catch(function(erro){

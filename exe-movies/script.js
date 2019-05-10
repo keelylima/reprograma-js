@@ -1,6 +1,7 @@
 const input = document.querySelector('#movie');
 const btn = document.querySelector('.btn-search-movie');
 const containerMovies = document.querySelector('.movies');
+const form = document.querySelector('.form');
 
 btn.addEventListener('click', function(event){
     event.preventDefault();
@@ -40,6 +41,8 @@ btn.addEventListener('click', function(event){
             btn.addEventListener('click', function () {
                 box.remove();
             });
+
+            form.reset();
 
         });
     })

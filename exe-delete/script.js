@@ -36,7 +36,7 @@ fetch('https://reqres.in/api/users')
                 fetch('https://reqres.in/api/users', {
                     method: 'DELETE',
                     headers: {
-                        'Accepet': 'application/json',
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
